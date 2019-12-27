@@ -4,3 +4,11 @@
     margin: 10px;
     background-color: red;
 }
+
+#top-pads {
+    display: flex;
+}
+
+#bottom-pads {
+    display: flex;
+}
