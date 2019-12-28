@@ -8,7 +8,7 @@ body {
     align-items: center;
 }
 
-.game-pad {
+.game-pad
     height: 200px;
     width: 200px;
     margin: 10px;
