@@ -8,12 +8,22 @@ body {
     align-items: center;
 }
 
+#title {
+    font-size: 50px;
+}
+
 .game-pad {
     height: 200px;
     width: 200px;
     margin: 10px;
-    border: 2px solid black;
+    border: 5px solid black;
+    transition: border .5s;
     border-radius: .5em;
+}
+
+:hover.game-pad {
+    border: 5px solid lightgray;
+    transition: border .5s;
 }
 
 #green-pad {
