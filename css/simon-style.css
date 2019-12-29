@@ -24,7 +24,7 @@ body {
 :hover.game-pad {
     border: 5px solid lightgray;
     transition: border .5s;
-}
+
 
 #green-pad {
     background-color: green;
