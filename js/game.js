@@ -115,7 +115,7 @@
             if(inputWorking.length === inputPlayer.length) {
                 if (inputWorking.join("").match(inputPlayer.join(""))) {
                     correctAnswerCounter++;
-                    statusArea.text("Correct Answers: " + correctAnswerCounter);
+                    statusArea.text("Correct Sequences: " + correctAnswerCounter);
                     playerSequence = [];
                     buildSequence(inputWorking);
                     displaySequence(inputWorking);
