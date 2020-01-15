@@ -43,7 +43,6 @@
             gameStartButton.attr("disabled", true);
             workingSequence = [];
             playerSequence = [];
-
             buildSequence(workingSequence);
             displaySequence(workingSequence);
         }
