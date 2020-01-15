@@ -2,59 +2,67 @@
     "use strict";
     $(document).ready(function(){
 
+        let correctAnswerCounter = 0;
+        let workingSequence = [];
+        let playerSequence = [];
+
         const gameStartButton = $("#start-game");
 
         gameStartButton.click(function(){
-            playGame();
+            startGame();
         });
-
-
 
         const greenPad = $("#green-pad");
         const redPad = $("#red-pad");
         const yellowPad = $("#yellow-pad");
         const bluePad = $("#blue-pad");
 
+        const statusArea = $("#status-area");
 
+        greenPad.click(function(){
+            playerSequence.push("green");
+            compareSequences(workingSequence, playerSequence);
+        });
+        greenPad.attr("disabled", true);
 
-        function playGame() {
-            let workingSequence = [];
-            let playerSequence = [];
+        redPad.click(function(){
+            playerSequence.push("red");
+            compareSequences(workingSequence, playerSequence);
+        });
+        redPad.attr("disabled", true);
+
+        yellowPad.click(function(){
+            playerSequence.push("yellow");
+            compareSequences(workingSequence, playerSequence);
+        });
+        yellowPad.attr("disabled", true);
+
+        bluePad.click(function(){
+            playerSequence.push("blue");
+            compareSequences(workingSequence, playerSequence);
+        });
+        bluePad.attr("disabled", true);
+
+        function startGame() {
+            statusArea.empty();
+            gameStartButton.attr("disabled", true);
+            workingSequence = [];
+            playerSequence = [];
 
             buildSequence(workingSequence);
+            displaySequence(workingSequence);
         }
 
-        async function displaySequence(inputSequence) {
-            for (let i = 0; i < inputSequence.length; i++) {
-                switch (inputSequence[i]) {
-                    case "green":
-                        flashGreen();
-                        await sleep(1500);
-                        break;
-                    case "red":
-                        flashRed();
-                        await sleep(1500);
-                        break;
-                    case "yellow":
-                        flashYellow();
-                        await sleep(1500);
-                        break;
-                    case "blue":
-                        flashBlue();
-                        await sleep(1500);
-                        break;
-                }
-            }
+        function endGame() {
+            workingSequence = [];
+            playerSequence = [];
+            correctAnswerCounter = 0;
+            statusArea.text("GAME OVER");
+            gameStartButton.attr("disabled", false);
         }
-
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
 
         function buildSequence(inputSequence) {
             let randomNumber = Math.floor((Math.random() * 4) + 1);
-            console.log(randomNumber);
             switch (randomNumber) {
                 case 1:
                     inputSequence.push("green");
@@ -71,35 +79,79 @@
             }
         }
 
-        function flashGreen() {
-            greenPad.addClass("flash-light-green");
-            setTimeout(function(){
-                greenPad.removeClass("flash-light-green");
-            }, 1500);
+        async function displaySequence(inputSequence) {
+            greenPad.attr("disabled", true);
+            redPad.attr("disabled", true);
+            yellowPad.attr("disabled", true);
+            bluePad.attr("disabled", true);
+            await sleep(1500);
+            for (let i = 0; i < inputSequence.length; i++) {
+                switch (inputSequence[i]) {
+                    case "green":
+                        flashGreen();
+                        await sleep(1600);
+                        break;
+                    case "red":
+                        flashRed();
+                        await sleep(1600);
+                        break;
+                    case "yellow":
+                        flashYellow();
+                        await sleep(1600);
+                        break;
+                    case "blue":
+                        flashBlue();
+                        await sleep(1600);
+                        break;
+                }
+            }
+            greenPad.attr("disabled", false);
+            redPad.attr("disabled", false);
+            yellowPad.attr("disabled", false);
+            bluePad.attr("disabled", false);
         }
 
-        function flashRed() {
+        function compareSequences(inputWorking, inputPlayer) {
+            if(inputWorking.length === inputPlayer.length) {
+                if (inputWorking.join("").match(inputPlayer.join(""))) {
+                    correctAnswerCounter++;
+                    statusArea.text("Correct Answers: " + correctAnswerCounter);
+                    playerSequence = [];
+                    buildSequence(inputWorking);
+                    displaySequence(inputWorking);
+                } else {
+                    endGame();
+                }
+            }
+        }
+
+        async function flashGreen() {
+            greenPad.addClass("flash-light-green").removeClass;
+            await sleep(1550);
+            greenPad.removeClass("flash-light-green");
+        }
+
+        async function flashRed() {
             redPad.addClass("flash-light-red");
-            setTimeout(function(){
-                redPad.removeClass("flash-light-red");
-            }, 1500);
+            await sleep(1550);
+            redPad.removeClass("flash-light-red");
         }
 
-        function flashYellow() {
+        async function flashYellow() {
             yellowPad.addClass("flash-light-yellow");
-            setTimeout(function(){
-                yellowPad.removeClass("flash-light-yellow");
-            }, 1500);
+            await sleep(1550);
+            yellowPad.removeClass("flash-light-yellow");
         }
 
-        function flashBlue() {
+        async function flashBlue() {
             bluePad.addClass("flash-light-blue");
-            setTimeout(function(){
-                bluePad.removeClass("flash-light-blue");
-            }, 1500);
+            await sleep(1550);
+            bluePad.removeClass("flash-light-blue");
         }
 
-        displaySequence(["green", "blue", "red"]);
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
 
     });
 })();
