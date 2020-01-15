@@ -33,7 +33,6 @@ body {
 .flash-light-green {
     -webkit-animation-name: flashLightGreen;
     -webkit-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: 1;
 }
 
 @keyframes flashLightGreen {
@@ -49,7 +48,6 @@ body {
 .flash-light-red {
     -webkit-animation-name: flashLightRed;
     -webkit-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: 1;
 }
 
 @keyframes flashLightRed {
@@ -65,7 +63,6 @@ body {
 .flash-light-blue {
     -webkit-animation-name: flashLightBlue;
     -webkit-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: 1;
 }
 
 @keyframes flashLightBlue {
@@ -81,12 +78,11 @@ body {
 .flash-light-yellow {
     -webkit-animation-name: flashLightYellow;
     -webkit-animation-duration: 1.5s;
-    -webkit-animation-iteration-count: 1;
 }
 
 @keyframes flashLightYellow {
     0% {background-color: yellow;}
-    50% {background-color: lightYellow;}
+    50% {background-color: #fffed6;}
     100% {background-color: yellow;}
 }
 
@@ -98,7 +94,12 @@ body {
     display: flex;
 }
 
+#status-area {
+    height: 25px;
+}
+
 #start-game {
     font-size: 25px;
-    margin: 1em;
+    border: 2px solid black;
+    border-radius: 5px;
 }
