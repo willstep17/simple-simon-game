@@ -30,16 +30,64 @@ body {
     background-color: green;
 }
 
+.flash-light-green {
+    -webkit-animation-name: flashLightGreen;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: 1;
+}
+
+@keyframes flashLightGreen {
+    0% {background-color: green;}
+    50% {background-color: lightGreen;}
+    100% {background-color: green;}
+}
+
 #red-pad {
     background-color: red;
+}
+
+.flash-light-red {
+    -webkit-animation-name: flashLightRed;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: 1;
+}
+
+@keyframes flashLightRed {
+    0% {background-color: red;}
+    50% {background-color: pink;}
+    100% {background-color: red;}
 }
 
 #blue-pad {
     background-color: blue;
 }
 
+.flash-light-blue {
+    -webkit-animation-name: flashLightBlue;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: 1;
+}
+
+@keyframes flashLightBlue {
+    0% {background-color: blue;}
+    50% {background-color: lightblue;}
+    100% {background-color: blue;}
+}
+
 #yellow-pad {
     background-color: yellow;
+}
+
+.flash-light-yellow {
+    -webkit-animation-name: flashLightYellow;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: 1;
+}
+
+@keyframes flashLightYellow {
+    0% {background-color: yellow;}
+    50% {background-color: lightYellow;}
+    100% {background-color: yellow;}
 }
 
 #top-pads {

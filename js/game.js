@@ -8,6 +8,8 @@
             playGame();
         });
 
+
+
         const greenPad = $("#green-pad");
         const redPad = $("#red-pad");
         const yellowPad = $("#yellow-pad");
@@ -22,8 +24,31 @@
             buildSequence(workingSequence);
         }
 
-        function displaySequence(inputSequence) {
+        async function displaySequence(inputSequence) {
+            for (let i = 0; i < inputSequence.length; i++) {
+                switch (inputSequence[i]) {
+                    case "green":
+                        flashGreen();
+                        await sleep(1500);
+                        break;
+                    case "red":
+                        flashRed();
+                        await sleep(1500);
+                        break;
+                    case "yellow":
+                        flashYellow();
+                        await sleep(1500);
+                        break;
+                    case "blue":
+                        flashBlue();
+                        await sleep(1500);
+                        break;
+                }
+            }
+        }
 
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
 
@@ -46,7 +71,42 @@
             }
         }
 
+        function flashGreen() {
+            greenPad.addClass("flash-light-green");
+            setTimeout(function(){
+                greenPad.removeClass("flash-light-green");
+            }, 1500);
+        }
 
+        function flashRed() {
+            redPad.addClass("flash-light-red");
+            setTimeout(function(){
+                redPad.removeClass("flash-light-red");
+            }, 1500);
+        }
+
+        function flashYellow() {
+            yellowPad.addClass("flash-light-yellow");
+            setTimeout(function(){
+                yellowPad.removeClass("flash-light-yellow");
+            }, 1500);
+        }
+
+        function flashBlue() {
+            bluePad.addClass("flash-light-blue");
+            setTimeout(function(){
+                bluePad.removeClass("flash-light-blue");
+            }, 1500);
+        }
+
+        displaySequence(["green", "blue", "red"]);
 
     });
 })();
+
+
+
+
+
+
+
