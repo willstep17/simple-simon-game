@@ -49,3 +49,8 @@ body {
 #bottom-pads {
     display: flex;
 }
+
+#start-game {
+    font-size: 25px;
+    margin: 1em;
+}
