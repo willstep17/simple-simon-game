@@ -2,12 +2,11 @@
     "use strict";
     $(document).ready(function(){
 
-        let correctAnswerCounter = 0;
         let workingSequence = [];
         let playerSequence = [];
+        let correctAnswerCounter = 0;
 
         const gameStartButton = $("#start-game");
-
         gameStartButton.click(function(){
             startGame();
         });
@@ -16,32 +15,28 @@
         const redPad = $("#red-pad");
         const yellowPad = $("#yellow-pad");
         const bluePad = $("#blue-pad");
-
-        const statusArea = $("#status-area");
-
         greenPad.click(function(){
             playerSequence.push("green");
             compareSequences(workingSequence, playerSequence);
         });
         greenPad.attr("disabled", true);
-
         redPad.click(function(){
             playerSequence.push("red");
             compareSequences(workingSequence, playerSequence);
         });
         redPad.attr("disabled", true);
-
         yellowPad.click(function(){
             playerSequence.push("yellow");
             compareSequences(workingSequence, playerSequence);
         });
         yellowPad.attr("disabled", true);
-
         bluePad.click(function(){
             playerSequence.push("blue");
             compareSequences(workingSequence, playerSequence);
         });
         bluePad.attr("disabled", true);
+
+        const statusArea = $("#status-area");
 
         function startGame() {
             statusArea.empty();
@@ -84,7 +79,7 @@
             redPad.attr("disabled", true);
             yellowPad.attr("disabled", true);
             bluePad.attr("disabled", true);
-            await sleep(1500);
+            await sleep(1000);
             for (let i = 0; i < inputSequence.length; i++) {
                 switch (inputSequence[i]) {
                     case "green":
