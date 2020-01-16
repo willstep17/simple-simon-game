@@ -39,12 +39,13 @@
         const statusArea = $("#status-area");
 
         function startGame() {
-            statusArea.empty();
-            gameStartButton.attr("disabled", true);
             workingSequence = [];
             playerSequence = [];
+            correctAnswerCounter = 0;
+            statusArea.empty();
             buildSequence(workingSequence);
             displaySequence(workingSequence);
+            gameStartButton.attr("disabled", true);
         }
 
         function endGame() {
